@@ -32,7 +32,7 @@ public class CourseRepositoryTest {
 	}
 	
 	@Test
-	@DirtiesContext
+	@DirtiesContext 
 	public void deleteById_basic() {
 		repository.deleteById(10001L);
 		assertNull(repository.findById(10001L));
