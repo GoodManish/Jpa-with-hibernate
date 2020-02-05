@@ -36,7 +36,7 @@ public class CourseRepository {
 		}
 		return course;
 	}
-	//em keep track of entities it bound to, in transactional environment
+	//em keep track of entities it bound to, which is in transactional environment 
 	public void playWithEntityManager() {
 		Course course1 = new Course("WebService in 10 steps");
 		em.persist(course1);
