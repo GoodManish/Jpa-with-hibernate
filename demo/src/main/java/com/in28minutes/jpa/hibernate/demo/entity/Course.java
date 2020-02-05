@@ -16,7 +16,7 @@ public class Course {
 	private String name;
 	
 	protected Course() {
-		
+	
 	}
 
 	public Course(String name) {
