@@ -38,9 +38,22 @@ public class CourseRepository {
 	}
 	//em keep track of entities it bound to, in transactional environment
 	public void playWithEntityManager() {
-		Course course = new Course("WebService in 10 steps");
-		em.persist(course);
-		course.setName("WebService in 10 steps -- updated");
-		course.setName("WebService in 10 steps -- updated again");
+		Course course1 = new Course("WebService in 10 steps");
+		em.persist(course1);
+		em.flush();
+		
+		course1.setName("WebService in 10 steps -- updated");
+		em.flush();
+		
+		
+		Course course2 = new Course("ReactJS in 10 steps");
+		em.persist(course2);
+		em.flush();
+		
+		//detach- course2 will now be not tracked, hence below will not updated 
+		em.detach(course2);
+		
+		course2.setName("ReactJS in 10 steps -- updated");
+		em.flush();
 	}
 }
