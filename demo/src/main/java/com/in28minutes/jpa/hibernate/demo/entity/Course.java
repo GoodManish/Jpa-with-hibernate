@@ -36,7 +36,7 @@ public class Course {
 		return id;
 	}
 
-	// toString
+	//toString
 	@Override
 	public String toString() {
 		return "Course [name=" + name + "]";
