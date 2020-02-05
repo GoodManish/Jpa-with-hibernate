@@ -40,16 +40,18 @@ public class CourseRepository {
 	public void playWithEntityManager() {
 		Course course1 = new Course("WebService in 10 steps");
 		em.persist(course1);
-		Course course2 = new Course("ReactJS in 10 steps");
-		em.persist(course2);
+		course1.setName(null);
 		
-		em.flush();
-		
-		course1.setName("WebService in 10 steps -- updated");
-		course2.setName("ReactJS in 10 steps -- updated");
-		
-		em.refresh(course1);
-		
-		em.flush();
+//		Course course2 = new Course("ReactJS in 10 steps");
+//		em.persist(course2);
+//		
+//		em.flush();
+//		
+//		course1.setName("WebService in 10 steps -- updated");
+//		course2.setName("ReactJS in 10 steps -- updated");
+//		
+//		em.refresh(course1);
+//		
+//		em.flush();
 	}
 }
