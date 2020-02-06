@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
@@ -13,8 +14,14 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
-@Table(name="Course")
-@NamedQuery(name = "query_get_all_courses", query = "select c from Course c")
+@Table(name = "Course")
+@NamedQueries(value = { 
+		@NamedQuery(name = "query_get_all_courses", query = "select c from Course c"),
+		@NamedQuery(name = "query_get_all_courses_like_10_steps", query = "select c from Course c where name like '%10 steps'") 
+		}
+)
+
+
 public class Course {
 	
 	@Id 
