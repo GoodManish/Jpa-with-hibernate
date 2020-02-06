@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,10 +34,11 @@ public class StudentRepositoryTest {
 	EntityManager em;
 	
 	@Test
+	@Transactional
 	public void getStudentAndPassportDetails() {
 		Student student = em.find(Student.class, 20001L);
 		logger.info("Student -> {}", student);
-		logger.info("Passport -> {}", student.getPassport());   // OneToOne is always EAGER Fetch
+		logger.info("Passport -> {}", student.getPassport()); 
 	}
 
 
