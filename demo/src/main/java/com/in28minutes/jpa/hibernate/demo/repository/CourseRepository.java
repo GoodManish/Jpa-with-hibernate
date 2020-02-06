@@ -40,18 +40,9 @@ public class CourseRepository {
 	public void playWithEntityManager() {
 		Course course1 = new Course("WebService in 10 steps");
 		em.persist(course1);
-		course1.setName(null);
 		
-//		Course course2 = new Course("ReactJS in 10 steps");
-//		em.persist(course2);
-//		
-//		em.flush();
-//		
-//		course1.setName("WebService in 10 steps -- updated");
-//		course2.setName("ReactJS in 10 steps -- updated");
-//		
-//		em.refresh(course1);
-//		
-//		em.flush();
+		Course course2 = findById(10001L);
+		course2.setName("JPA in 50 steps --- updated");
+		
 	}
 }

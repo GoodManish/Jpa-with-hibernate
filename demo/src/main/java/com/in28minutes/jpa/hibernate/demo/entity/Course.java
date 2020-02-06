@@ -1,10 +1,15 @@
 package com.in28minutes.jpa.hibernate.demo.entity;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name="Course")
@@ -14,12 +19,16 @@ public class Course {
 	@GeneratedValue
 	private Long id;
 	
-	@Column(name="fullname", nullable = false)
+	@Column(nullable = false)
 	private String name;
 	
-	protected Course() {
+	@UpdateTimestamp
+	private LocalDateTime lastUpdatedDate;
 	
-	}
+	@CreationTimestamp
+	private LocalDateTime createDate;
+	
+	protected Course() {}
 
 	public Course(String name) {
 		super();
