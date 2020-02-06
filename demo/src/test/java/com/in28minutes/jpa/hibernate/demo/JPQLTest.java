@@ -32,14 +32,14 @@ public class JPQLTest {
 	
 	@Test
 	public void jpql_basic() {
-		Query query = em.createQuery("select c from Course c");
+		Query query = em.createNamedQuery("query_get_all_courses");
 		List resultList = query.getResultList(); // Lookout for entity name-> ["Course" != "course"]
 		logger.info("select c from course c ->{}",resultList);
 	}
 	
 	@Test
 	public void jpql_Typed_basic() {
-		TypedQuery<Course> typedQuery = em.createQuery("select c from Course c", Course.class);
+		TypedQuery<Course> typedQuery = em.createNamedQuery("query_get_all_courses", Course.class);
 		List<Course> resultList = typedQuery.getResultList();
 		logger.info("Typed --  select c from course c ->{}", resultList);
 	}
