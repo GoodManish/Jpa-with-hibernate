@@ -35,10 +35,16 @@ public class StudentRepositoryTest {
 	
 	@Test
 	@Transactional
-	public void getStudentAndPassportDetails() {
+	public void getStudentAndPassportDetailsTest() {
 		Student student = em.find(Student.class, 20001L);
 		logger.info("Student -> {}", student);
 		logger.info("Passport -> {}", student.getPassport()); 
+	}
+	
+	@Test
+//	@Transactional
+	public void SomeTest() {
+		repository.someOperationToUnderstandPersistenceContext();
 	}
 
 
