@@ -16,6 +16,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.in28minutes.jpa.hibernate.demo.entity.Course;
+import com.in28minutes.jpa.hibernate.demo.entity.Passport;
 import com.in28minutes.jpa.hibernate.demo.entity.Student;
 import com.in28minutes.jpa.hibernate.demo.repository.CourseRepository;
 import com.in28minutes.jpa.hibernate.demo.repository.StudentRepository;
@@ -47,5 +48,13 @@ public class StudentRepositoryTest {
 		repository.someOperationToUnderstandPersistenceContext();
 	}
 
+	@Test
+	@Transactional
+	public void getPassportAndAssociatedStudentDetailsTest() {
+		Passport passport = em.find(Passport.class, 40001L);
+
+		logger.info("Passport -> {}", passport); 
+		logger.info("Student -> {}",  passport.getStudent());
+	}
 
 }
