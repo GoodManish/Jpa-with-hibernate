@@ -5,21 +5,14 @@ insert into course(id, name, create_date, last_updated_date) values(10002, 'micr
 insert into course(id, name, create_date, last_updated_date) values(10003, 'Spring in 10 steps', sysdate(), sysdate());
 
 
-
-
-insert into student(id, name)  values(20001, 'Manish');
-insert into student(id, name)  values(20002, 'Shikha');
-insert into student(id, name)  values(20003, 'Ishaani');
-
-
-
-
-
 insert into passport(id, number)  values(40001, 'E123456');
 insert into passport(id, number)  values(40002, 'N123456');
 insert into passport(id, number)  values(40003, 'L123456');
 
 
+insert into student(id, name, passport_id)  values(20001, 'Manish', 40001);
+insert into student(id, name, passport_id)  values(20002, 'Shikha', 40002);
+insert into student(id, name, passport_id)  values(20003, 'Ishaani',40003);
 
 
 

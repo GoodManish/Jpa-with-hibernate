@@ -1,17 +1,10 @@
 package com.in28minutes.jpa.hibernate.demo.entity;
 
-import java.time.LocalDateTime;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Student {
@@ -23,6 +16,17 @@ public class Student {
 	@Column(nullable = false)
 	private String name;
 	
+	@OneToOne
+	private Passport passport;
+	
+	public Passport getPassport() {
+		return passport;
+	}
+
+	public void setPassport(Passport passport) {
+		this.passport = passport;
+	}
+
 	protected Student() {}
 
 	public Student(String name) {
@@ -41,8 +45,7 @@ public class Student {
 	public Long getId() {
 		return id;
 	}
-
-	//toString
+ 
 	@Override
 	public String toString() {
 		return String.format("Student[%s]", name);
