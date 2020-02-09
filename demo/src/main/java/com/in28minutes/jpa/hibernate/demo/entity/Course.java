@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -39,6 +40,21 @@ public class Course {
 	@OneToMany(mappedBy = "course", fetch = FetchType.EAGER)
 	private List<Review> reviews = new ArrayList<>(); 
 	
+	@ManyToMany(mappedBy = "courses")
+	private List<Student> students = new ArrayList<Student>();
+	
+	public List<Student> getStudents() {
+		return students;
+	}
+	
+	public void addStudent(Student student) {
+		students.add(student);
+	}
+	
+	public void removeStudent(Student student) {
+		students.remove(student);
+	}
+
 	public List<Review> getReviews() {
 		return reviews;
 	}
