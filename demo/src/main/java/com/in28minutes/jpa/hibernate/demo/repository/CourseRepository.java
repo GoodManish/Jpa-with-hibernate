@@ -45,4 +45,11 @@ public class CourseRepository {
 		course2.setName("JPA in 50 steps --- updated");
 		
 	}
+
+	public void addReviewsForCourse() {
+		//get course 10003
+		Course course = findById(10003L);
+		logger.info("course.reviews() -> ", course.getReviews());
+		
+	}
 }
