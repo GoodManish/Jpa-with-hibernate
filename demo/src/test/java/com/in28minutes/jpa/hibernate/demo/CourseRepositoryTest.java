@@ -3,6 +3,9 @@ package com.in28minutes.jpa.hibernate.demo;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
+import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -13,6 +16,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.in28minutes.jpa.hibernate.demo.entity.Course;
+import com.in28minutes.jpa.hibernate.demo.entity.Review;
 import com.in28minutes.jpa.hibernate.demo.repository.CourseRepository;
 
 @RunWith(SpringRunner.class)
@@ -24,6 +28,9 @@ public class CourseRepositoryTest {
 	
 	@Autowired
 	CourseRepository repository;
+	
+	@Autowired
+	EntityManager em;
 	
 	@Test
 	public void findById_basic() {
@@ -57,4 +64,18 @@ public class CourseRepositoryTest {
 		repository.playWithEntityManager();
 	}
 
+	
+	@Test
+	@Transactional
+	public void retrieveReviewWithCourseTest() {
+		Course course = repository.findById(10001L);
+		logger.info("{} -> ", course.getReviews());
+	}
+	
+	@Test
+	@Transactional
+	public void retrieveCourseWithReviewTest() {
+		Review review = em.find(Review.class, 50001L);
+		logger.info("{} ", review.getCourse());
+	}
 }
